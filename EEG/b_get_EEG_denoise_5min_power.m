@@ -190,7 +190,7 @@ for ii = 1:length(for_EEG_N2231.filenames_a)
         for m=1:10 %i=frame_index
             data_frame{m}=data_epoch(n, (L_frame*EEG0.srate*(m-1)+1) : (L_frame*EEG0.srate*m));
             warning('off');
-            [pxx,f]=pwelch(data_frame{m},hanning(2000),0.5,2000,500);%4s,overlap2s
+            [pxx,f]=pwelch(data_frame{m},hanning(2000),1000,2000,500);%4s,overlap2s
             warning('on');
 
             index_s2=find(f==0.5); % 0.3 Hz - 35 Hz
@@ -226,4 +226,5 @@ save('SWAo_N2231_nnn.txt','-ascii','SWAo_N2231');
 
 % repeat the above analysis on 130 wakefulness data prior to (or after) sleep sessions
 % and get SWAo_N130_nnn.txt
+
 
